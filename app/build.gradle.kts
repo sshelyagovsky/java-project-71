@@ -1,5 +1,10 @@
 plugins {
     application
+    jacoco
+    id("checkstyle")
+    id("io.freefair.lombok") version "8.6"
+    id("com.github.ben-manes.versions") version "0.50.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 application {
@@ -14,6 +19,9 @@ repositories {
 }
 
 dependencies {
+    implementation("info.picocli:picocli:4.7.5")
+    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
