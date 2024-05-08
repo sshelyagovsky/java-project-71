@@ -1,5 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/sshelyagovsky/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sshelyagovsky/java-project-71/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/maintainability)](https://codeclimate.com/github/sshelyagovsky/java-project-71/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/test_coverage)](https://codeclimate.com/github/sshelyagovsky/java-project-71/test_coverage)
 # "Вычислитель отличий"
 - Утилита для вычисления отличий файлов разных форматов
 
@@ -30,66 +32,20 @@
 
 - Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
 
-## Make file
+## Build
 
 ```bash
-.DEFAULT_GOAL := build-run
+make run-build
 ```
 
-```bash
-setup:
-	./gradlew wrapper --gradle-version 8.5
-```
+## Run Dist
 
 ```bash
-clean:
-	./gradlew clean
+make run-dist
 ```
 
-```bash
-build:
-	./gradlew clean build
-```
+## Run checkstyle
 
 ```bash
-install:
-	./gradlew clean install
-```
-
-```bash
-run-dist:
-	./build/install/app/bin/app
-```
-
-```bash
-run:
-	./gradlew run
-```
-
-```bash
-test:
-	./gradlew test
-```
-
-```bash
-report:
-	./gradlew jacocoTestReport
-```
-
-```bash
-lint:
-	./gradlew checkstyleMain
-```
-
-```bash
-check-deps:
-	./gradlew dependencyUpdates -Drevision=release
-```
-
-```bash
-build-run: build run
-```
-
-```bash
-.PHONY: build
+make run-checkstyle
 ```
