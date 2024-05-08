@@ -30,20 +30,66 @@
 
 - Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
 
-## Build
+## Make file
 
 ```bash
-make run-build
+.DEFAULT_GOAL := build-run
 ```
 
-## Run Dist
-
 ```bash
-make run-dist
+setup:
+	./gradlew wrapper --gradle-version 8.5
 ```
 
-## Run checkstyle
+```bash
+clean:
+	./gradlew clean
+```
 
 ```bash
-make run-checkstyle
+build:
+	./gradlew clean build
+```
+
+```bash
+install:
+	./gradlew clean install
+```
+
+```bash
+run-dist:
+	./build/install/app/bin/app
+```
+
+```bash
+run:
+	./gradlew run
+```
+
+```bash
+test:
+	./gradlew test
+```
+
+```bash
+report:
+	./gradlew jacocoTestReport
+```
+
+```bash
+lint:
+	./gradlew checkstyleMain
+```
+
+```bash
+check-deps:
+	./gradlew dependencyUpdates -Drevision=release
+```
+
+```bash
+build-run: build run
+```
+
+```bash
+.PHONY: build
 ```
