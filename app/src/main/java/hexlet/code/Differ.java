@@ -99,7 +99,6 @@ public class Differ {
             }
         }
         str.append("}");
-
         return str.toString();
     }
 }
