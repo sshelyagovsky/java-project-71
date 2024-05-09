@@ -32,20 +32,50 @@
 
 - Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
 
-## Build
+## Run install app
 
 ```bash
-make run-build
+install:
+	./gradlew clean installDist
 ```
 
 ## Run Dist
 
 ```bash
-make run-dist
+run-dist:
+	./build/install/app/bin/app
 ```
 
-## Run checkstyle
+## Run build
 
 ```bash
-make run-checkstyle
+build:
+	./gradlew clean build
+```
+
+## Run
+
+```bash
+run:
+	./gradlew run
+```
+
+## Run test
+
+```bash
+test:
+	./gradlew test
+```
+
+## Run generate report
+
+```bash
+report:
+	./gradlew jacocoTestReport
+```
+
+## Run linter
+```bash
+lint:
+	./gradlew checkstyleMain
 ```
