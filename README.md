@@ -1,4 +1,4 @@
-![https://github.com/sshelyagovsky/java-project-71/actions/workflows/main.yml](https://github.com/sshelyagovsky/java-project-71/actions/workflows/main.yml/badge.svg)
+[![Java CI](https://github.com/sshelyagovsky/java-project-71/actions/workflows/main.yaml/badge.svg)](https://github.com/sshelyagovsky/java-project-71/actions/workflows/main.yaml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/maintainability)](https://codeclimate.com/github/sshelyagovsky/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/test_coverage)](https://codeclimate.com/github/sshelyagovsky/java-project-71/test_coverage)
 ### Hexlet tests and linter status:
