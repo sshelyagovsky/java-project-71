@@ -1,7 +1,8 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/sshelyagovsky/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sshelyagovsky/java-project-71/actions)
+[![Java CI](https://github.com/sshelyagovsky/java-project-71/actions/workflows/main.yml/badge.svg)](https://github.com/sshelyagovsky/java-project-71/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/maintainability)](https://codeclimate.com/github/sshelyagovsky/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0adf60d17c5c6fe1bffb/test_coverage)](https://codeclimate.com/github/sshelyagovsky/java-project-71/test_coverage)
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/sshelyagovsky/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sshelyagovsky/java-project-71/actions)
 # "Вычислитель отличий"
 - Утилита для вычисления отличий файлов разных форматов
 
