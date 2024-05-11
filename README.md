@@ -37,21 +37,51 @@
 - [json](https://www.json.org/json-ru.html)
 - [yaml](https://yaml.org/)
 
-## Использование
-- Запустить run-build (Сборка проекта)
+## Использование 
+(Сборка проекта)
+```bash
+make install 
+```
 
-- Запустите run-dist (Запуск консольного приложения)
+(Запуск консольного приложения)
+```bash
+run-dist 
+```
 
-- Запустите ./build/install/app/bin/app -h
+(help)
+```console
+./build/install/app/bin/app -h
+```
 
-- Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
-- Запустите ./build/install/app/bin/app src/main/resources/file1.yaml src/main/resources/file2.yaml
+(Сравнение плоских Json)
+```console
+./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
+```
 
-- Запустите ./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json
-- Запустите ./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish
+(Сравнение плоских YAML)
+```console
+./build/install/app/bin/app src/main/resources/file1.yaml src/main/resources/file2.yaml
+```
 
-- Запустите ./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml
-- Запустите ./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish
+(Сравнение c вложенной структурой Json)
+```console
+./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json
+```
+
+(Сравнение c вложенной структурой Json с параметром форматирования -f)
+```console
+./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish
+```
+
+(Сравнение c вложенной структурой YAML)
+```console
+./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml
+```
+
+(Сравнение c вложенной структурой с параметром форматирования -f)
+```console
+./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish
+```
 
 ## Run install app
 
