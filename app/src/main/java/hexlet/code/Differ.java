@@ -4,23 +4,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Differ {
 
-    static final String TYPE_DIFF_DELETE = "DELETE";
-    static final String TYPE_DIFF_ADD = "ADD";
-    static final String TYPE_DIFF_EQUAL = "EQUAL";
-    static final String TYPE_DIFF_DIFFER = "DIFFER";
-
     public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
+
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
 
         Map<String, Object> mapContentFile1 = readFileContent(filePath1);
         Map<String, Object> mapContentFile2 = readFileContent(filePath2);
 
-        return Comparator.compareFileContent(mapContentFile1, mapContentFile2);
+        Set<String> uniqKeys = getUniqKeys(mapContentFile1, mapContentFile2);
+        var diffContentData = Comparator.compareFileContent(mapContentFile1, mapContentFile2, uniqKeys);
+        return Formatter.formatFileContent(diffContentData, uniqKeys, format);
     }
 
     public static Map<String, Object> readFileContent(String filePath) throws Exception {
@@ -41,24 +42,10 @@ public class Differ {
         return fileName.substring(indexDotFile1 + 1);
     }
 
-    public static String getFormattedData(Map<String, HashMap<String, Object>> mapDiffResult,
-                                          Set<String> uniqKeys) {
-
-        StringBuilder str = new StringBuilder("{\n");
-        for (var key : uniqKeys) {
-            var values = mapDiffResult.get(key);
-            if (values.get("compareResult").equals(TYPE_DIFF_EQUAL)) {
-                str.append("  ").append("  ").append(key).append(": ").append(values.get("value1")).append("\n");
-            } else if (values.get("compareResult").equals(TYPE_DIFF_DIFFER)) {
-                str.append("  ").append("- ").append(key).append(": ").append(values.get("value1")).append("\n");
-                str.append("  ").append("+ ").append(key).append(": ").append(values.get("value2")).append("\n");
-            } else if (values.get("compareResult").equals(TYPE_DIFF_DELETE)) {
-                str.append("  ").append("- ").append(key).append(": ").append(values.get("value1")).append("\n");
-            } else {
-                str.append("  ").append("+ ").append(key).append(": ").append(values.get("value2")).append("\n");
-            }
-        }
-        str.append("}");
-        return str.toString();
+    public static Set<String> getUniqKeys(Map<String, Object> mapContent1, Map<String, Object> mapContent2) {
+        Set<String> uniqKeys = new TreeSet<>(mapContent1.keySet());
+        uniqKeys.addAll(mapContent2.keySet());
+        return uniqKeys;
     }
+
 }

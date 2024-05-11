@@ -21,6 +21,8 @@
 [![asciicast](https://asciinema.org/a/hQiF2D5OpyDDmt1KHnVAJyMZQ.svg)](https://asciinema.org/a/hQiF2D5OpyDDmt1KHnVAJyMZQ)
 #### DEMO 3
 [![asciicast](https://asciinema.org/a/aFnK92E2t44qSuMgWlF0gfbMT.svg)](https://asciinema.org/a/aFnK92E2t44qSuMgWlF0gfbMT)
+#### DEMO 3
+[![asciicast](https://asciinema.org/a/ES4NgHuebpsWZDXQwn1gWxcXu.svg)](https://asciinema.org/a/ES4NgHuebpsWZDXQwn1gWxcXu)
 
 ## Технологии
 - [java](https://dev.java/learn/)
@@ -36,8 +38,13 @@
 - Запустите ./build/install/app/bin/app -h
 
 - Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
-
 - Запустите ./build/install/app/bin/app src/main/resources/file1.yaml src/main/resources/file2.yaml
+
+- Запустите ./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json
+- Запустите ./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish
+
+- Запустите ./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml
+- Запустите ./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish
 
 ## Run install app
 
