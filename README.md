@@ -7,6 +7,7 @@
 
 # "Формат файлов"
 - JSON
+- YAML
 
 # "Правила чтения результата сравнения"
 Отсутствие плюса или минуса говорит, что ключ есть в обоих файлах, и его значения совпадают. Во всех остальных ситуациях ключ был либо удалён, либо добавлен, либо изменён.
@@ -17,11 +18,14 @@
 [![asciicast](https://asciinema.org/a/VbHV5kEV4T8JIYxVwhJFnyvq8.svg)](https://asciinema.org/a/VbHV5kEV4T8JIYxVwhJFnyvq8)
 #### DEMO 2
 [![asciicast](https://asciinema.org/a/hQiF2D5OpyDDmt1KHnVAJyMZQ.svg)](https://asciinema.org/a/hQiF2D5OpyDDmt1KHnVAJyMZQ)
+#### DEMO 3
+[![asciicast](https://asciinema.org/a/aFnK92E2t44qSuMgWlF0gfbMT.svg)](https://asciinema.org/a/aFnK92E2t44qSuMgWlF0gfbMT)
 
 ## Технологии
 - [java](https://dev.java/learn/)
 - [markdown](https://www.markdownguide.org/)
 - [json](https://www.json.org/json-ru.html)
+- [yaml](https://yaml.org/)
 
 ## Использование
 - Запустить run-build (Сборка проекта)
@@ -31,6 +35,8 @@
 - Запустите ./build/install/app/bin/app -h
 
 - Запустите ./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
+
+- Запустите ./build/install/app/bin/app src/main/resources/file1.yaml src/main/resources/file2.yaml
 
 ## Run install app
 
