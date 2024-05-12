@@ -74,7 +74,7 @@ run-dist
 
 (Сравнение c вложенной структурой Json с параметром форматирования -f)
 ```console
-./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish/plain
+./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish
 ```
 
 (Сравнение c вложенной структурой YAML)
@@ -84,7 +84,7 @@ run-dist
 
 (Сравнение c вложенной структурой с параметром форматирования -f)
 ```console
-./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish/plain
+./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish
 ```
 
 ## Run install app
