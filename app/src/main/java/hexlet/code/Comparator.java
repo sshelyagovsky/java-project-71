@@ -1,46 +1,34 @@
 package hexlet.code;
 
-import hexlet.code.enums.Operation;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class Comparator {
 
-    public static HashMap<String, HashMap<String, Object>> compareFileContent(Map<String, Object> mapContent1,
-                                 Map<String, Object> mapContent2, Set<String> uniqKeys) throws IOException {
+    public static HashMap<String, HashMap<String, Object>> compareFileContent(Map<String, Object> content1,
+                                 Map<String, Object> content2, Set<String> uniqKeys) {
 
-        var compareResult = "";
         var mapDiffResult = new HashMap<String, HashMap<String, Object>>();
-
         for (var key : uniqKeys) {
-            var val1 = mapContent1.get(key);
-            var val2 = mapContent2.get(key);
-            val1 = val1 == null ? "null" : val1.toString();
-            val2 = val2 == null ? "null" : val2.toString();
             var values = new HashMap<String, Object>();
-
-            if (mapContent1.containsKey(key) && mapContent2.containsKey(key)) {
-                if (val1.equals(val2)) {
-                    compareResult = String.valueOf(Operation.EQUAL);
-                } else {
-                    compareResult = String.valueOf(Operation.DIFFER);
-                }
-                values.put("compareResult", compareResult);
-                values.put("value1", val1);
-                values.put("value2", val2);
+            if (content1.containsKey(key) && !content2.containsKey(key)) {
+                values.put("compareResult", "DELETE");
+                values.put("value1", content1.get(key));
                 mapDiffResult.put(key, values);
-            } else if (mapContent1.containsKey(key)) {
-                compareResult = String.valueOf(Operation.DELETE);
-                values.put("compareResult", compareResult);
-                values.put("value1", val1);
+            } else if (!content1.containsKey(key) && content2.containsKey(key)) {
+                values.put("compareResult", "ADD");
+                values.put("value2", content2.get(key));
+                mapDiffResult.put(key, values);
+            } else if (Objects.equals(content1.get(key), (content2.get(key)))) {
+                values.put("compareResult", "EQUAL");
+                values.put("value1", content1.get(key));
                 mapDiffResult.put(key, values);
             } else {
-                compareResult = String.valueOf(Operation.ADD);
-                values.put("compareResult", compareResult);
-                values.put("value2", val2);
+                values.put("compareResult", "DIFFER");
+                values.put("value1", content1.get(key));
+                values.put("value2", content2.get(key));
                 mapDiffResult.put(key, values);
             }
         }

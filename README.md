@@ -31,6 +31,10 @@
 
 [![asciicast](https://asciinema.org/a/ES4NgHuebpsWZDXQwn1gWxcXu.svg)](https://asciinema.org/a/ES4NgHuebpsWZDXQwn1gWxcXu)
 
+#### DEMO 5
+
+[![asciicast](https://asciinema.org/a/T4TnfWsrWIcWaGXOMxQ6cqKUq.svg)](https://asciinema.org/a/T4TnfWsrWIcWaGXOMxQ6cqKUq)
+
 ## Технологии
 - [java](https://dev.java/learn/)
 - [markdown](https://www.markdownguide.org/)
@@ -70,7 +74,7 @@ run-dist
 
 (Сравнение c вложенной структурой Json с параметром форматирования -f)
 ```console
-./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish
+./build/install/app/bin/app src/main/resources/filenested1.json src/main/resources/filenested2.json -f stylish/plain
 ```
 
 (Сравнение c вложенной структурой YAML)
@@ -80,7 +84,7 @@ run-dist
 
 (Сравнение c вложенной структурой с параметром форматирования -f)
 ```console
-./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish
+./build/install/app/bin/app src/main/resources/filenested1.yaml src/main/resources/filenested2.yaml -f stylish/plain
 ```
 
 ## Run install app

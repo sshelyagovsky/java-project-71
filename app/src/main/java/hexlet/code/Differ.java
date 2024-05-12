@@ -16,11 +16,11 @@ public class Differ {
 
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
 
-        Map<String, Object> mapContentFile1 = readFileContent(filePath1);
-        Map<String, Object> mapContentFile2 = readFileContent(filePath2);
+        Map<String, Object> content1 = readFileContent(filePath1);
+        Map<String, Object> content2 = readFileContent(filePath2);
 
-        Set<String> uniqKeys = getUniqKeys(mapContentFile1, mapContentFile2);
-        var diffContentData = Comparator.compareFileContent(mapContentFile1, mapContentFile2, uniqKeys);
+        Set<String> uniqKeys = getUniqKeys(content1, content2);
+        var diffContentData = Comparator.compareFileContent(content1, content2, uniqKeys);
         return Formatter.formatFileContent(diffContentData, uniqKeys, format);
     }
 

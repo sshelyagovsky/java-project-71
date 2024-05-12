@@ -23,6 +23,8 @@ public class TestFileComparison {
     private static String fileNestYamlPath2;
     private static String fileNestJsonResultPath;
     private static String fileNestYamlResultPath;
+    private static String filePlainFormatResultPath;
+    private static String fileNestedPlainFormatResultPath;
 
 
     @BeforeEach
@@ -42,6 +44,11 @@ public class TestFileComparison {
         fileNestYamlPath1 = "src/test/resources/filenested1.yaml";
         fileNestYamlPath2 = "src/test/resources/filenested2.yaml";
         fileNestYamlResultPath = "src/test/resources/compare_nested_res_yaml.txt";
+
+        filePlainFormatResultPath = "src/test/resources/compare_plain_format.txt";
+        fileNestedPlainFormatResultPath = "src/test/resources/compare_nested_plain_format.txt";
+
+
     }
 
     @Test
@@ -78,6 +85,11 @@ public class TestFileComparison {
         assertTrue(Files.exists(pathNestYaml2));
         assertTrue(Files.exists(pathNestYamlDiffResult));
 
+        Path pathPlainDiffResult = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
+        Path pathNestPlainDiffResult = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
+        assertTrue(Files.exists(pathPlainDiffResult));
+        assertTrue(Files.exists(pathNestPlainDiffResult));
+
     }
     @Test
     public void testDiffJson() throws Exception {
@@ -110,6 +122,41 @@ public class TestFileComparison {
         Path pathNestYamlFileDiff = Paths.get(fileNestYamlResultPath).toAbsolutePath().normalize();
         var expected = Files.readString(pathNestYamlFileDiff);
         var actual = Differ.generate(fileNestYamlPath1, fileNestYamlPath2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDiffJsonPlain() throws Exception {
+        Path pathJsonFileDiffPlain = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
+        var expected = Files.readString(pathJsonFileDiffPlain);
+        var actual = Differ.generate(fileJsonPath1, fileJsonPath2, "plain");
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testDiffYamlPlain() throws Exception {
+        Path pathYamlFileDiffPlain = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
+        var expected = Files.readString(pathYamlFileDiffPlain);
+        var actual = Differ.generate(fileYamlPath1, fileYamlPath2, "plain");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNestDiffJsonPlain() throws Exception {
+        Path pathNestJsonFileDiffPlain = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
+        var expected = Files.readString(pathNestJsonFileDiffPlain);
+        var actual = Differ.generate(fileNestJsonPath1, fileNestJsonPath2, "plain");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNestDiffYAmlPlain() throws Exception {
+        Path pathNestYamlFileDiffPlain = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
+        var expected = Files.readString(pathNestYamlFileDiffPlain);
+        var actual = Differ.generate(fileNestYamlPath1, fileNestYamlPath2, "plain");
 
         assertEquals(expected, actual);
     }
