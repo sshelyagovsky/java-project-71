@@ -35,6 +35,10 @@
 
 [![asciicast](https://asciinema.org/a/T4TnfWsrWIcWaGXOMxQ6cqKUq.svg)](https://asciinema.org/a/T4TnfWsrWIcWaGXOMxQ6cqKUq)
 
+#### DEMO 6
+
+[![asciicast](https://asciinema.org/a/4sddmDdv9WYOBeBjt9nTXgGMJ.svg)](https://asciinema.org/a/4sddmDdv9WYOBeBjt9nTXgGMJ)
+
 ## Технологии
 - [java](https://dev.java/learn/)
 - [markdown](https://www.markdownguide.org/)

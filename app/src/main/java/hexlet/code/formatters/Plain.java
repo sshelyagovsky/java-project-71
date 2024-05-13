@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Plain {
-    public static String getPlainFormat(Map<String, HashMap<String, Object>> diffContentData,
+    public static String getFormat(Map<String, HashMap<String, Object>> diffContentData,
                                         Set<String> uniqKeys) {
 
         StringBuilder str = new StringBuilder();

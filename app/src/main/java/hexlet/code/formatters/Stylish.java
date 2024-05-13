@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Stylish {
 
-    public static String getStylishFormat(Map<String, HashMap<String, Object>> diffContentData,
+    public static String getFormat(Map<String, HashMap<String, Object>> diffContentData,
                                           Set<String> uniqKeys) {
 
         StringBuilder str = new StringBuilder("{\n");

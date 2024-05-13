@@ -2,163 +2,138 @@ import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFileComparison {
+
+    private static String testResourcePath;
     private static String fileJsonPath1;
     private static String fileJsonPath2;
+
     private static String fileYamlPath1;
     private static String fileYamlPath2;
-    private static String fileJsonResultPath;
-    private static String fileYamlResultPath;
 
-    private static String fileNestJsonPath1;
-    private static String fileNestJsonPath2;
-    private static String fileNestYamlPath1;
-    private static String fileNestYamlPath2;
-    private static String fileNestJsonResultPath;
-    private static String fileNestYamlResultPath;
-    private static String filePlainFormatResultPath;
-    private static String fileNestedPlainFormatResultPath;
+    private static String resultStylishFilePath;
+    private static String resultPlainFilePath;
+    private static String resultJsonFilePath;
 
+    public static boolean isFileExists(String inputPath) {
+        Path path = Paths.get(inputPath).toAbsolutePath().normalize();
+        return Files.exists(path);
+    }
+
+    public static String readFile(String inputPath) throws IOException {
+        Path path = Paths.get(inputPath).toAbsolutePath().normalize();
+        return Files.readString(path);
+    }
 
     @BeforeEach
     public void beforeEach() {
-        fileJsonPath1 = "src/test/resources/file1.json";
-        fileJsonPath2 = "src/test/resources/file2.json";
-        fileJsonResultPath = "src/test/resources/compare_result_json.txt";
 
-        fileYamlPath1 = "src/test/resources/file1.yaml";
-        fileYamlPath2 = "src/test/resources/file2.yaml";
-        fileYamlResultPath = "src/test/resources/compare_result_yaml.txt";
+        testResourcePath = "src/test/resources/";
+        fileJsonPath1 = testResourcePath + "fileNested1.json";
+        fileJsonPath2 = testResourcePath + "fileNested2.json";
 
-        fileNestJsonPath1 = "src/test/resources/filenested1.json";
-        fileNestJsonPath2 = "src/test/resources/filenested2.json";
-        fileNestJsonResultPath = "src/test/resources/compare_nested_res_json.txt";
+        fileYamlPath1 = testResourcePath + "fileNested1.yaml";
+        fileYamlPath2 = testResourcePath + "fileNested2.json";
 
-        fileNestYamlPath1 = "src/test/resources/filenested1.yaml";
-        fileNestYamlPath2 = "src/test/resources/filenested2.yaml";
-        fileNestYamlResultPath = "src/test/resources/compare_nested_res_yaml.txt";
-
-        filePlainFormatResultPath = "src/test/resources/compare_plain_format.txt";
-        fileNestedPlainFormatResultPath = "src/test/resources/compare_nested_plain_format.txt";
-
-
+        resultStylishFilePath = testResourcePath + "resultStylish.txt";
+        resultPlainFilePath = testResourcePath + "resultPlain.txt";
+        resultJsonFilePath = testResourcePath + "resultJson.txt";
     }
 
     @Test
     public void testFileExists() {
-        Path pathJson1 = Paths.get(fileJsonPath1).toAbsolutePath().normalize();
-        Path pathJson2 = Paths.get(fileJsonPath2).toAbsolutePath().normalize();
-        Path pathJsonDiffResult = Paths.get(fileJsonResultPath).toAbsolutePath().normalize();
 
-        assertTrue(Files.exists(pathJson1));
-        assertTrue(Files.exists(pathJson2));
-        assertTrue(Files.exists(pathJsonDiffResult));
+        assertTrue(isFileExists(fileJsonPath1));
+        assertTrue(isFileExists(fileJsonPath2));
 
-        Path pathYaml1 = Paths.get(fileYamlPath1).toAbsolutePath().normalize();
-        Path pathYaml2 = Paths.get(fileYamlPath2).toAbsolutePath().normalize();
-        Path pathYamlDiffResult = Paths.get(fileYamlResultPath).toAbsolutePath().normalize();
+        assertTrue(isFileExists(fileYamlPath1));
+        assertTrue(isFileExists(fileYamlPath2));
 
-        assertTrue(Files.exists(pathYaml1));
-        assertTrue(Files.exists(pathYaml2));
-        assertTrue(Files.exists(pathYamlDiffResult));
-
-        Path pathNestJson1 = Paths.get(fileNestJsonPath1).toAbsolutePath().normalize();
-        Path pathNestJson2 = Paths.get(fileNestJsonPath2).toAbsolutePath().normalize();
-        Path pathNestJsonDiffResult = Paths.get(fileNestJsonResultPath).toAbsolutePath().normalize();
-
-        assertTrue(Files.exists(pathNestJson1));
-        assertTrue(Files.exists(pathNestJson2));
-        assertTrue(Files.exists(pathNestJsonDiffResult));
-
-        Path pathNestYaml1 = Paths.get(fileNestYamlPath1).toAbsolutePath().normalize();
-        Path pathNestYaml2 = Paths.get(fileNestYamlPath2).toAbsolutePath().normalize();
-        Path pathNestYamlDiffResult = Paths.get(fileNestYamlResultPath).toAbsolutePath().normalize();
-
-        assertTrue(Files.exists(pathNestYaml1));
-        assertTrue(Files.exists(pathNestYaml2));
-        assertTrue(Files.exists(pathNestYamlDiffResult));
-
-        Path pathPlainDiffResult = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
-        Path pathNestPlainDiffResult = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
-        assertTrue(Files.exists(pathPlainDiffResult));
-        assertTrue(Files.exists(pathNestPlainDiffResult));
-
+        assertTrue(isFileExists(resultStylishFilePath));
+        assertTrue(isFileExists(resultPlainFilePath));
+        assertTrue(isFileExists(resultJsonFilePath));
     }
+
     @Test
-    public void testDiffJson() throws Exception {
-        Path pathJsonFileDiff = Paths.get(fileJsonResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathJsonFileDiff);
+    public void testDiffJsonFormatStylish() throws Exception {
+        var expected = readFile(resultStylishFilePath);
         var actual = Differ.generate(fileJsonPath1, fileJsonPath2);
-
         assertEquals(expected, actual);
     }
+
     @Test
-    public void testDiffYaml() throws Exception {
-        Path pathYamlFileDiff = Paths.get(fileYamlResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathYamlFileDiff);
+    public void testDiffYamlFormatStylish() throws Exception {
+        var expected = readFile(resultStylishFilePath);
         var actual = Differ.generate(fileYamlPath1, fileYamlPath2);
-
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testNestDiffJson() throws Exception {
-        Path pathNestJsonFileDiff = Paths.get(fileNestJsonResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathNestJsonFileDiff);
-        var actual = Differ.generate(fileNestJsonPath1, fileNestJsonPath2);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testNestDiffYAml() throws Exception {
-        Path pathNestYamlFileDiff = Paths.get(fileNestYamlResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathNestYamlFileDiff);
-        var actual = Differ.generate(fileNestYamlPath1, fileNestYamlPath2);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testDiffJsonPlain() throws Exception {
-        Path pathJsonFileDiffPlain = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathJsonFileDiffPlain);
+    public void testDiffJsonFormatPlain() throws Exception {
+        var expected = readFile(resultPlainFilePath);
         var actual = Differ.generate(fileJsonPath1, fileJsonPath2, "plain");
-
         assertEquals(expected, actual);
     }
+
     @Test
-    public void testDiffYamlPlain() throws Exception {
-        Path pathYamlFileDiffPlain = Paths.get(filePlainFormatResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathYamlFileDiffPlain);
+    public void testDiffYamlFormatPlain() throws Exception {
+        var expected = readFile(resultPlainFilePath);
         var actual = Differ.generate(fileYamlPath1, fileYamlPath2, "plain");
-
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testNestDiffJsonPlain() throws Exception {
-        Path pathNestJsonFileDiffPlain = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathNestJsonFileDiffPlain);
-        var actual = Differ.generate(fileNestJsonPath1, fileNestJsonPath2, "plain");
-
+    public void testDiffJsonFormatJson() throws Exception {
+        var expected = readFile(resultJsonFilePath);
+        var actual = Differ.generate(fileJsonPath1, fileJsonPath2, "json");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testNestDiffYAmlPlain() throws Exception {
-        Path pathNestYamlFileDiffPlain = Paths.get(fileNestedPlainFormatResultPath).toAbsolutePath().normalize();
-        var expected = Files.readString(pathNestYamlFileDiffPlain);
-        var actual = Differ.generate(fileNestYamlPath1, fileNestYamlPath2, "plain");
-
+    public void testDiffYamlFormatJson() throws Exception {
+        var expected = readFile(resultJsonFilePath);
+        var actual = Differ.generate(fileYamlPath1, fileYamlPath2, "json");
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void negativeTestFormat() {
+        Exception exception = assertThrows(Exception.class, () -> {
+            Differ.generate(fileYamlPath1, fileYamlPath2, "xml");
+        });
+        String expectedMessage = "Format file is unknown!";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void negativeTestExtensionFile() {
+        var incorrectFileExt = "src/test/resources/fileNested1.yml";
+        Exception exception = assertThrows(Exception.class, () -> {
+            Differ.generate(fileYamlPath1, incorrectFileExt);
+        });
+        String expectedMessage = "Type of file is unknown!";
+        String actualMessage = exception.getMessage();
+        System.out.println(expectedMessage);
+        System.out.println(actualMessage);
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void negativeTestFileName() {
+        Exception exception = assertThrows(Exception.class, () -> {
+            Differ.generate("src/test/resources/file.json", fileYamlPath1);
+        });
+        String expectedMessage = "File " + Paths.get("src/test/resources/file.json")
+                .toAbsolutePath().normalize() + " doesn't exists!";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 }
