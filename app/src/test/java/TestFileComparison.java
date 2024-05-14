@@ -7,7 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestFileComparison {
 
@@ -121,8 +124,6 @@ public class TestFileComparison {
         });
         String expectedMessage = "Type of file is unknown!";
         String actualMessage = exception.getMessage();
-        System.out.println(expectedMessage);
-        System.out.println(actualMessage);
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
