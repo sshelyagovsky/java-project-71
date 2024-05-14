@@ -24,7 +24,7 @@ public class Plain {
             }
         }
 
-        return str.toString();
+        return str.toString().trim();
     }
 
     public static String checkComplex(Object value) {

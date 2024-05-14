@@ -118,7 +118,7 @@ public class TestFileComparison {
 
     @Test
     public void negativeTestExtensionFile() {
-        var incorrectFileExt = "src/test/resources/fileNested1.yml";
+        var incorrectFileExt = "src/test/resources/fileNested1.xml";
         Exception exception = assertThrows(Exception.class, () -> {
             Differ.generate(fileYamlPath1, incorrectFileExt);
         });

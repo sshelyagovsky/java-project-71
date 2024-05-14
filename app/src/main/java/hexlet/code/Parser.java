@@ -16,7 +16,7 @@ public class Parser {
             ObjectMapper objectMapper = new ObjectMapper();
             mapContent = objectMapper.readValue(contentFile,
                     new TypeReference<Map<String, Object>>() { });
-        } else if (extensionFile.equals("yaml")) {
+        } else if (extensionFile.equals("yaml") || extensionFile.equals("yml")) {
             ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
             mapContent = objectMapper.readValue(contentFile,
                     new TypeReference<Map<String, Object>>() { });
@@ -26,4 +26,5 @@ public class Parser {
 
         return mapContent;
     }
+
 }
