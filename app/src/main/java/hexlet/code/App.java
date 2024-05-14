@@ -12,17 +12,17 @@ import java.util.concurrent.Callable;
         mixinStandardHelpOptions = true,
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference.")
-public class App implements Callable {
+public final class App implements Callable<Integer> {
 
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    private String filePath1;
+    String filePath1;
 
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
-    private String filePath2;
+    String filePath2;
 
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
             description = "output format [default: stylish]")
-    private String format;
+    String format;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);

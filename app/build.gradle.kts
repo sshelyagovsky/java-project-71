@@ -20,12 +20,6 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
-}
-
 dependencies {
     implementation("info.picocli:picocli:4.7.5")
     implementation("org.apache.commons:commons-collections4:4.4")

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class TestFileComparison {
+class TestFileComparison {
 
     private static String testResourcePath;
     private static String fileJsonPath1;
