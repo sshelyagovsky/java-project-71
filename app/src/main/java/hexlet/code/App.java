@@ -15,14 +15,14 @@ import java.util.concurrent.Callable;
 public final class App implements Callable<Integer> {
 
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    String filePath1;
+    private String filePath1;
 
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
-    String filePath2;
+    private String filePath2;
 
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
             description = "output format [default: stylish]")
-    String format;
+    private String format;
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
