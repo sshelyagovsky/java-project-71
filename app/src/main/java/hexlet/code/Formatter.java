@@ -14,7 +14,7 @@ public class Formatter {
         return switch (format) {
             case "stylish" -> Stylish.getFormat(diffContentData, uniqKeys);
             case "plain" -> Plain.getFormat(diffContentData, uniqKeys);
-            case "json" -> Json.getFormat(diffContentData, uniqKeys);
+            case "json" -> Json.getFormat(diffContentData);
             default -> throw new Exception("Format file is unknown!");
         };
     }
